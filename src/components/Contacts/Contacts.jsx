@@ -1,16 +1,15 @@
 import React from 'react';
+import ContactsRender from './ContactsRender';
 import propTypes from 'prop-types';
 
 const Contacts = ({ contacts, detele }) => (
   <div>
     <ul>
       {contacts.map(({ id, name, number }) => (
-        <li key={id}>
-          {name}: {number}
-          <button type="button" onClick={() => detele(id)}>
-            dell
-          </button>
-        </li>
+        <ContactsRender
+          contact={[id, name, number]}
+          deleteContact={() => detele(id)}
+        />
       ))}
     </ul>
   </div>

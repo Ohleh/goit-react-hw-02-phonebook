@@ -16,11 +16,15 @@ class Form extends Component {
   };
 
   formSubmit = ev => {
+    const { name } = this.state;
+
     ev.preventDefault();
     if (
-      this.props.checkContacts.find(contact => contact.name === this.state.name)
+      this.props.checkContacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
     ) {
-      return alert(`${this.state.name} - is already exists`);
+      return alert(`${name} - is already exists`);
     }
     this.props.onSubmitProp(this.state);
 
